@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resim Gösterme</title>
+</head>
+<body>
+
+    <h1>Resim Gösterme</h1>
+
+    <!-- Resim göstermek için bir img etiketi -->
+    <img id="displayedImage" src="#" alt="Gösterilen Resim">
+
+    <script>
+        // Veritabanındaki resmi göstermek için bu fonksiyonu kullan
+        function showImage(imageId) {
+            var img = document.getElementById('displayedImage');
+
+            // Resmi çekmek için bir HTTP GET isteği gönder
+            fetch('/getimage/' + imageId)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Resim çekme hatası: ' + response.statusText);
+                    }
+                    return response.blob();
+                })
+                .then(blob => {
+                    // Blob verisini kullanarak resmi göster
+                    var url = URL.createObjectURL(blob);
+                    img.src = url;
+                })
+                .catch(error => {
+                    console.error('Hata:', error);
+                });
+        }
+
+        // Örnek olarak resim id'si 1 olan resmi göster
+        showImage(1);
+    </script>
+
+</body>
+</html>

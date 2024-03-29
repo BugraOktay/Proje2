@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kişisel Bilgi Formu</title>
+    <style>
+        body{
+            display: grid;
+            justify-content: center;
+            font-family:Arial, Helvetica, sans-serif;
+            
+        }
+        form{
+            background-color: rgb(208, 152, 152);
+            padding: 25px;
+            width: 350px;
+            border-radius: 10px;
+            
+        }    
+        h1{
+            text-align: center;
+            text-decoration:  underline;
+            
+        }      
+        
+        
+        input{
+            margin: 20px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+   
+
+    <form  action="/veri-ekle" method="post">
+        <h1>Kayıt Formu</h1>
+        <label for="ad">Ad:</label>
+        <input type="text" id="ad" name="ad" required><br>
+
+        <label for="dogumTarihi">Doğum Tarihi:</label>
+        <input type="date" id="dogumTarihi" name="dogumTarihi" required><br>
+
+        <label>Cinsiyet:</label>
+        <input type="radio" id="erkek" name="cinsiyet" value="Erkek">
+        <label for="erkek">Erkek</label>
+        <input type="radio" id="kadin" name="cinsiyet" value="Kadın">
+        <label for="kadin">Kadın</label><br>
+
+        <label>Kullanıcı Rolü:</label>
+        <input type="radio" name="oki" value="Hoca">
+        <label >Hoca</label>
+        <input type="radio"  name="oki" value="Danisan">
+        <label >Danışan</label>
+
+        <label>Kullanıcı Hedefi:</label><br>
+        <input type="radio" name="hedef" value="Kiloalma">
+        <label >Kilo alma</label><br>
+        <input type="radio"  name="hedef" value="Kiloverme">
+        <label >Kilo verme</label><br>
+        <input type="radio" name="hedef" value="Kiloyukoruma">
+        <label >Kiloyu koruma</label><br>
+        <input type="radio"  name="hedef" value="Kasyapma">
+        <label >Kas yapma</label><br>
+
+        <label for="email">E-posta Adresi:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Şifre:</label>
+        <input type="password" id="password" name="sifre" required><br>
+
+        <label for="telefon">Telefon Numarası:</label>
+        <input type="tel" id="telefon" name="telefon"  required><br>
+
+        <input type="submit" value="Gönder" >
+        <input type="button" value="Geri" onclick="window.location.href='giris'">
+    </form>
+</body>
+</html>

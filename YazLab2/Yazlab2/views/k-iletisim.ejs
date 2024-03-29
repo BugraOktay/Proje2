@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelen Kutusu ve Mesaj Gönder</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: auto auto;
+            padding: 50px;
+        }
+
+        .gelen-kutusu,
+        .mesaj-gonder {
+            background-color: #fff;
+            padding: 20px;
+            margin: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 155px rgba(48, 26, 26, 0.479);
+        }
+
+        h2 {
+            text-align: center;
+
+        }
+
+        .msj {
+            color: #494848;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mesaj {
+            border-bottom: 2px solid #ddd;
+        }
+
+        .gonderen {
+            font-weight: bold;
+        }
+
+
+        input[type="submit"] {
+            background-color: #5caf4c;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #a1f3a5;
+        }
+
+        input,
+        textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('k-menu.ejs') %>
+        <div class="container">
+            <div class="gelen-kutusu">
+                <h2>Gelen Kutusu</h2>
+                <ul>
+                    <% results.forEach(element=> { %>
+
+                        <li class="mesaj">
+                            <div class="gonderen"><%= element.gonderen %></div>
+                            <div class="msj"><%= element.mesaj %></div>
+                        </li>
+
+                        <% }) %>
+
+
+                            
+                </ul>
+            </div>
+
+            <div class="mesaj-gonder">
+                <h2>Mesaj Gönder</h2>
+                <form action="/mesaj_gonder" method="post">
+                    <label for="alici">Alıcı:</label>
+                    <input type="email" id="alici" name="alici" required><br>
+
+                    <label for="mesaj">Mesaj:</label>
+                    <textarea id="mesaj" name="mesaj" rows="6" required></textarea><br>
+
+                    <input type="submit" value="Gönder">
+                </form>
+            </div>
+        </div>
+</body>
+
+</html>

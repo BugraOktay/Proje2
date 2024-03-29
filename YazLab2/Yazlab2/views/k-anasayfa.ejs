@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 99%;
+            height: 550px;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 25px;
+
+        }
+
+        .form1 {
+            display: grid;
+            grid-template-columns: auto auto;
+            padding: 20px;
+        }
+
+        label {
+
+            padding: 5px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+
+
+        }
+
+        .sabit {
+            width: 100px;
+            background-color: rgb(146, 208, 208);
+        }
+
+        .gizle {
+            height: 30px;
+            display: none;
+            margin-bottom: 35px;
+        }
+
+        
+        button{
+            padding: 10px 20px;
+            width: 200px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 7px;
+            background-color: #0b8a22;
+            color: #fff;
+
+        }
+
+        button:hover {
+            background-color: #2eb929;
+
+        }
+        .oki{
+            padding: 20px;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <%-include('k-menu.ejs')  %>
+
+    <h1 style="margin: 25px; text-decoration: underline; ">Profilim</h1>
+    <div class="container">
+        <div class="item1">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/JPEG_example_flower.jpg" height="300">
+            <button onclick="gizle()">Güncelle</button>
+        </div>
+
+
+        <div class="item">
+            <form class="form1" action="">
+                <label class="sabit" for="">Ad:</label>
+                <label class="bilgiler"><%= results[0].adsoyad %></label>
+                
+
+                <label class="sabit" for="">Cinsiyet:</label>
+                <label class="bilgiler"><%= results[0].cinsiyet %></label>
+                
+
+                <label class="sabit" for="">E-mail:</label>
+                <label class="bilgiler"><%= results[0].eposta %></label>
+               
+
+                <label class="sabit" for="">Şifre:</label>
+                <label class="bilgiler"><%= results[0].sifre %></label>
+                
+
+                <label class="sabit" for="">Telefon:</label>
+                <label class="bilgiler"><%= results[0].telefon %></label>
+                
+
+                <label class="sabit" for="">Doğum Tarihi:</label>
+                <label class="bilgiler"><%= results[0].dogum %></label>
+                
+
+            </form>
+
+        </div>
+        <div class="oki">
+            <form action="/guncel" method="post">
+            <input id="id1" class="gizle" type="text" name="adsoyad" required><br>
+            <input id="id2" class="gizle" type="text" name="cinsiyet" required>
+            <input id="id3" class="gizle" type="text" name="email" required>
+            <input id="id4" class="gizle" type="text" name="sifre" required>
+            <input id="id5" class="gizle" type="text" name="telefon" required>
+            <input id="id6" class="gizle" type="text" name="dogum" required>
+            <input id="id7" style="padding: 10px 20px;
+            width: 200px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 7px;
+            background-color: #0b8a22;
+            color: #fff;display: none;"  type="submit" value="Onayla">
+        </form>
+        </div>
+
+
+    </div>
+    <script>
+        function gizle(){
+            var id1 = document.getElementById("id1")
+            var id2 = document.getElementById("id2")
+            var id3 = document.getElementById("id3")
+            var id4 = document.getElementById("id4")
+            var id5 = document.getElementById("id5")
+            var id6 = document.getElementById("id6")
+            var id7 = document.getElementById("id7")
+            var dizi =[id1,id2,id3,id4,id5,id6,id7];
+
+            dizi.forEach(element => {
+                element.style.display="inline";
+            });
+            
+
+            
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
